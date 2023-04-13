@@ -1,4 +1,6 @@
-#include "Timekeeping.h"
+#include "Timekeeper.h"
+
+Timekeeper currentTimer;
 
 void setup()
 {
@@ -7,5 +9,10 @@ void setup()
 
 void loop()
 {
-	updateTime();
+	currentTimer.updateTime();
+  Serial.print(currentTimer.getHour());
+  Serial.print(":");
+  Serial.print(currentTimer.getMinute());
+  Serial.print(":");
+  Serial.println(currentTimer.getSecond());
 }
