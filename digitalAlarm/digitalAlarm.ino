@@ -1,3 +1,7 @@
+#include "Timekeeper.h"
+
+Timekeeper currentTimer;
+
 void setup()
 {
   Serial.begin(9600);
@@ -6,5 +10,5 @@ void setup()
 
 void loop()
 {
-	
+	currentTimer.updateTime();
 }
