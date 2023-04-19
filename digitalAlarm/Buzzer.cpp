@@ -32,14 +32,14 @@ void Buzzer::turnOnBuzzer(int durationms)
 
 void Buzzer::beep(int periodms)
 {
-  if (millis() - (periodms / 2) >= lastChange) {
-    state = !state;
-    if (state) {
+  if (millis() - (periodms / 2) >= lastBuzzTime) {
+    buzzerState = !buzzerState;
+    if (buzzerState) {
       turnOnBuzzer();
     } else {
       turnOffBuzzer();
     }
-    lastChange = millis();
+    lastBuzzTime = millis();
   }
 }
 

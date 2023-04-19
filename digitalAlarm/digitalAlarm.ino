@@ -78,7 +78,7 @@ void loop()
 
     if (alarmGoingOff)
     {
-      buzzer.turnOnBuzzer();
+      buzzer.beep(100);
       fadeLedTriangle(3);
     }
     else
