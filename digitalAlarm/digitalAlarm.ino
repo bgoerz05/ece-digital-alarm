@@ -66,7 +66,13 @@ void onAlarmRead(buttonState state)
 
 void onSnoozeRead(buttonState state)
 {
-
+  if (/*MOD HERE*/)
+  {
+    if (state == PRESSED)
+    {
+      alarmtimer.addMinute();
+    }
+  }
 }
 
 void onHourRead(buttonState state)
