@@ -76,25 +76,37 @@ void onAlarmRead(buttonState state)
 {
   if (state == PRESSED)
   {
-    alarmMode = !alarmMode;
-    turnOffLed();
+    if (alarmGoingOff)
+    {
+      for (int i = 0; i <= 23; i++)
+      {
+        alarmTimer.addHour();
+      }
+      alarmGoingOff = false;
+    }
+    else
+    {
+      alarmMode = !alarmMode;
+      turnOffLed();
+    }
   }
 }
 
 void onSnoozeRead(buttonState state)
 {
-  if (/*MOD HERE*/)
+  if (alarmGoingOff)
   {
     if (state == PRESSED)
     {
       alarmTimer.addMinute();
+      alarmGoingOff = false;
     }
   }
 }
 
 void onHourRead(buttonState state)
 {
-  if(state == PRESSED)
+  if (state == PRESSED)
   {
     if (alarmMode)
     {
