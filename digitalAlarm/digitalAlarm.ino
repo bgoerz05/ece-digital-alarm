@@ -50,8 +50,22 @@ void loop()
   }
   else
   {
-    display.setHours(currentTimer.getHour());
-    display.setMinutes(currentTimer.getMinute());
+    display.setHours(currentHour);
+    display.setMinutes(currentMinute);
+    if (currentTimer.getRaw() >= alarmTimer.getRaw())
+    {
+      alarmGoingOff = true;
+    }
+
+    if (alarmGoingOff)
+    {
+      buzzer.turnOnBuzzer();
+      fadeLedTriangle(3);
+    }
+    else
+    {
+      buzzer.turnOffBuzzer();
+    }
   }
 }
 
@@ -61,6 +75,20 @@ void onAlarmRead(buttonState state)
   {
     alarmMode = !alarmMode;
     turnOffLed();
+
+    if (alarmGoingOff)
+    {
+      for (int i = 0; i <= 23; i++)
+      {
+        alarmTimer.addHour();
+      }
+      alarmGoingOff = false;
+    }
+    else
+    {
+      alarmMode = !alarmMode;
+    }
+    turnOffLed(); 
   }
 }
 
