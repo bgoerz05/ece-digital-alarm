@@ -12,7 +12,6 @@ int brightness{0};
 int increment{1};
 
 void initLed(int pin){
-  pinMode(pin, OUTPUT);
   ledPin = pin;
 }
 
@@ -73,16 +72,17 @@ void fadeLedSawtooth(int periodms,int durationms){
 }
 
 void fadeLedTriangle(int periodms){
-  if (millis() - (periodms / 255) >= lastFade) {
-    if (brightness >= 255) {
+  if(millis()-lastFade>=periodms){
+    brightness=(brightness +increment);
+    if(brightness>=255){
       increment = -1;
-    } else if (brightness <= 0) {
+    }
+    if(brightness<=0){
       increment = 1;
     }
-    brightness = brightness + increment;
-    analogWrite(ledPin, brightness);
-    lastFade = millis();
-  }
+      analogWrite(ledPin,brightness);
+      lastFade=millis();
+  } 
 }
 
 void fadeLedTriangle(int periodms,int durationms){
