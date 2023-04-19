@@ -92,9 +92,6 @@ void onAlarmRead(buttonState state)
 {
   if (state == PRESSED)
   {
-    alarmMode = !alarmMode;
-    turnOffLed();
-
     if (alarmGoingOff)
     {
       for (int i = 0; i <= 23; i++)
@@ -106,8 +103,8 @@ void onAlarmRead(buttonState state)
     else
     {
       alarmMode = !alarmMode;
-      turnOffLed();
     }
+    turnOffLed();
   }
 }
 

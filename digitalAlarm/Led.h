@@ -12,6 +12,7 @@ int brightness{0};
 int increment{1};
 
 void initLed(int pin){
+  pinMode(pin, OUTPUT);
   ledPin = pin;
 }
 
