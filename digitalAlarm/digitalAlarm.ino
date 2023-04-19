@@ -116,6 +116,7 @@ void onSnoozeRead(buttonState state)
     {
       alarmTimer.addMinute();
       alarmGoingOff = false;
+      turnOffLed();
     }
   }
 }
