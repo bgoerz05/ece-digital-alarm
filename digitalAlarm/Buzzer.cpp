@@ -36,4 +36,11 @@ void Buzzer::beep(int periodms)
 }
 
 void Buzzer::beep(int periodms, int duration)
+{
+
+}
+
 void Buzzer::turnOffBuzzer()
+{
+  
+}

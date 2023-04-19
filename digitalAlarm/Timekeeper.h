@@ -13,6 +13,7 @@ class Timekeeper
     int getHour() const;
     int getMinute() const;
     int getSecond() const;
+    unsigned long getRaw() const;
 };
 
 #endif

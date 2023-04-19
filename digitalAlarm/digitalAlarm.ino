@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "Buzzer.h"
 #include "Display.h"
 #include "Led.h"
 #include "Timekeeper.h"
@@ -24,6 +25,12 @@ Button hourButton(A2, onHourRead);
 Button minuteButton(A3, onMinuteRead);
 
 bool alarmMode{ false };
+bool alarmGoingOff{ false };
+
+int alarmHour;
+int alarmMinute;
+int currentHour;
+int currentMinute;
 
 void setup()
 {
@@ -37,21 +44,31 @@ void loop()
 {
 	currentTimer.updateTime();
   display.checkColon(currentTimer);
+
   alarmButton.readButton();
   snoozeButton.readButton();
   hourButton.readButton();
   minuteButton.readButton();
 
+  alarmHour = alarmTimer.getHour();
+  alarmMinute = alarmTimer.getMinute();
+  currentHour = currentTimer.getHour();
+  currentMinute = currentTimer.getMinute();
+
   if (alarmMode)
   {
-    display.setHours(alarmTimer.getHour());
-    display.setMinutes(alarmTimer.getMinute());
+    display.setHours(alarmHour);
+    display.setMinutes(alarmMinute);
     blinkLed(200);
   }
   else
   {
-    display.setHours(currentTimer.getHour());
-    display.setMinutes(currentTimer.getMinute());
+    display.setHours(currentHour);
+    display.setMinutes(currentMinute);
+    if (currentTimer.getRaw() >= alarmTimer.getRaw())
+    {
+      alarmGoingOff = true;
+    }
   }
 }
 

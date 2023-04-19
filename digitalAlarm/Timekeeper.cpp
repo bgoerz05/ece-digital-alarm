@@ -36,3 +36,8 @@ int Timekeeper::getSecond() const
 {
   return (currentTime % msPerMinute) / msPerSecond;
 }
+
+int Timekeerper::getRaw() const
+{
+  return currentTime;
+}
