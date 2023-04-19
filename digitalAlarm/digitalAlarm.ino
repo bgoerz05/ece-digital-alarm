@@ -24,6 +24,8 @@ Button snoozeButton(A1, onSnoozeRead);
 Button hourButton(A2, onHourRead);
 Button minuteButton(A3, onMinuteRead);
 
+Buzzer buzzer(A4);
+
 bool alarmMode{ false };
 bool alarmGoingOff{ false };
 
@@ -37,6 +39,10 @@ void setup()
   Serial.begin(9600);
   currentTimer.addMinute();
   currentTimer.addHour();
+  for (int i = 0; i < 3; i++)
+  {
+    alarmTimer.addHour();
+  }
   initLed(A5);
 }
 
@@ -68,6 +74,17 @@ void loop()
     if (currentTimer.getRaw() >= alarmTimer.getRaw())
     {
       alarmGoingOff = true;
+    }
+
+    if (alarmGoingOff)
+    {
+      buzzer.turnOnBuzzer();
+      fadeLedTriangle(3);
+    }
+    else
+    {
+      buzzer.turnOffBuzzer();
+      // turnOffLed();
     }
   }
 }

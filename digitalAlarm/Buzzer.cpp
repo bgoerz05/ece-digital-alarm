@@ -42,5 +42,5 @@ void Buzzer::beep(int periodms, int duration)
 
 void Buzzer::turnOffBuzzer()
 {
-  
+  digitalWrite(buzzerPin, LOW);
 }
