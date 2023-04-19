@@ -1,5 +1,6 @@
 #include "Timekeeper.h"
 #include "Display.h"
+#include "Button.h"
 
 // Instantiates a Timekeeper, which will manage the current time
 Timekeeper currentTimer;
@@ -8,6 +9,10 @@ Timekeeper currentTimer;
 int digitPins[4]{13, 10, 9, 6};
 int segmentPins[7]{12, 8, 4, 3, 2, 11, 5};
 Display display(7, digitPins, segmentPins);
+// Button alarmButton(A0,);
+// Button snoozeButton(A1,);
+// Button hourButton(A2,);
+// Button minuteButton(A3,);
 
 void setup()
 {
