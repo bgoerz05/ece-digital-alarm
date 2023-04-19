@@ -10,7 +10,7 @@ Timekeeper alarmTimer;
 
 // Instantiates the display
 int digitPins[4]{13, 10, 9, 6};
-int segmentPins[7]{12, 8, 4, 3, 2, 11, 5};
+int segmentPins[7]{12, 8, 4, A5, 2, 11, 5};
 Display display(7, digitPins, segmentPins);
 
 // Button creations
@@ -43,7 +43,7 @@ void setup()
   {
     alarmTimer.addHour();
   }
-  initLed(A5);
+  initLed(3);
 }
 
 void loop()
