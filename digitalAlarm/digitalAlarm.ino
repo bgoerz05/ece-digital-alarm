@@ -70,7 +70,7 @@ void onSnoozeRead(buttonState state)
   {
     if (state == PRESSED)
     {
-      alarmtimer.addMinute();
+      alarmTimer.addMinute();
     }
   }
 }
